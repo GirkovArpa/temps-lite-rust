@@ -11,7 +11,9 @@ temps-lite
 
 > temps-lite is a modern and minimal application based on Sciter with actual weather information and forecast for Windows, Mac and Linux.
 
-![temps screenshot](assets/screenshot.gif)
+<h1 align="center">
+<img src="preview.gif" alt="temps-lite" width="280"/></a><br/><br/>
+</h1>
 
 ## Features
 
