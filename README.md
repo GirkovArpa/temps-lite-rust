@@ -52,3 +52,6 @@ The weather icons are made by the [original author](https://github.com/jackd248)
 ## License [![License](https://img.shields.io/github/license/jackd248/temps.svg?style=flat-square)]()
 
 Copyright © 2016 Konrad Michalik, 2021 Girkov Arpa. This software is licensed under the [MIT License](LICENSE).
+
+___
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V43JLTO)
