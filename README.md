@@ -17,14 +17,15 @@ temps-lite
 
 ## Features
 
-* Small filesize
-* Actual weather information for any location
-* Four-Day weather forecast
-* Information directly in your taskbar available
-* _Rain_, _snow_ and _thunder_ animations
-* Minimal and colorful design
-* Draggable
-* Minimizable
+- [x] Small filesize, ~10mb
+- [x] Light memory footprint
+- [x] Actual weather information for any location
+- [x] Four-Day weather forecast
+- [x] Information directly in your taskbar available
+- [x] _Rain_, _snow_ and _thunder_ animations
+- [x] Minimal and colorful design
+- [x] Draggable
+- [x] Minimizable
 
 ## Todo
 
