@@ -1,0 +1,5 @@
+$(#sciter-link) << event click {
+  const href = this.attributes["href"];
+  Sciter.launch(href);
+  return true;
+} 

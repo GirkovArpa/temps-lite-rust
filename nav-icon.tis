@@ -1,0 +1,15 @@
+function toggleSettings(navicon) {
+  navicon.attributes.toggleClass("open");
+  $(#container).attributes.toggleClass("risen");
+  $(#mask).attributes.toggleClass("invisible");
+  $(#top-layer).attributes.toggleClass("visible");
+  $(#main-display).attributes.toggleClass("visible");
+}
+
+$(#nav-icon) << event click {
+  toggleSettings(this);
+}
+
+$(#nav-icon) << event dblclick {
+  toggleSettings(this);
+}

@@ -1,0 +1,47 @@
+@image-map checkboxes {
+  src: url("assets/checkboxes@2x.png");
+  cells: 9 1;
+  items: checkbox-empty, checkbox-full, radio-empty, radio-full, star-empty, star-full, arrow-1, info, arrow-2;
+}
+
+button[type=radio].time-format {
+  text-align: left;
+}
+
+button[type=radio].time-format::before {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+}
+
+button[type=radio] {
+  text-align: right;
+  line-height: 20dip;
+}
+
+button[type=radio] {
+  style-set: std-radio-base;
+  width: 40dip;
+  height: 20dip;
+  vertical-align: middle;
+  background: image-map(checkboxes, radio-empty);
+  background-size: 20dip 20dip;
+  cursor: pointer;
+}
+
+button[type="radio"]:checked {
+  background: image-map(checkboxes, radio-full);
+}
+
+/** checkbox **/
+
+button[type=checkbox] {
+  style-set: std-checkbox-base;
+  width: 20dip;
+  height: 20dip;
+  background: image-map(checkboxes, checkbox-empty);
+  background-size: 20dip 20dip;
+  cursor: pointer;
+}
+
+button[type=checkbox]:checked {
+  background: image-map(checkboxes, checkbox-full);
+}

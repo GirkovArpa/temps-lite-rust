@@ -1,0 +1,110 @@
+#form {
+  margin: 8dip;
+  font-family: Rubik;
+}
+
+#form-rows {
+  flow: vertical;
+  border-spacing: *;
+}
+
+.form-row {
+  flow: horizontal;
+  border-spacing: *;
+  vertical-align: middle;
+  height: 32dip;
+}
+
+.apply-quit {
+  style-set: std-button-base;
+  height: 26dip;
+  width: 45%;
+  margin-top: 15dip;
+  vertical-align: middle;
+  line-height: 26dip;
+  cursor: pointer;
+  background-color: #80BBB2;
+  border-color: #80BBB2;
+  border-width: 1dip;
+  border-style: solid;
+  font-family: Arial;
+  color: white;
+  transition: background-color quad-in-out 0.3s, color quad-in-out 0.3s, outline-color quad-in-out 0.1s, border-radius quad-in-out 0.1s;
+}
+
+.apply-quit:hover {
+  background-color: white;
+  color: #80BBB2;
+}
+
+.apply-quit:focus, .apply-quit:active {
+  outline-color: rgba(247, 191, 78, 0.589);
+  outline-width: 2dip;
+  outline-offset: -1dip;
+  outline-style: solid;
+  border-radius: 3dip;
+}
+
+#quit {
+  border-color: rgb(204, 204, 204);
+  background-color: white;
+  color: black;
+}
+
+#quit:hover {
+  background-color: rgb(204, 204, 204);
+  color: white;
+}
+
+.label, #help, .row-label {
+  color: #999;
+}
+
+.label, #help {
+  font-size: 12dip;
+  text-align: left;
+  margin-bottom: 5dip;
+}
+
+#help {
+  font-size: 10dip;
+}
+
+#help>a {
+  color: black;
+  text-decoration: none;
+  margin-top: 5dip;
+}
+
+input[type=text] {
+  width: calc(100% - 16dip);
+  padding-bottom: 2dip;
+  margin: 0;
+  border-color: #999;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-radius: 0;
+  border-bottom-width: 1dip;
+  text-align: left;
+  font-size: 16dip;
+}
+
+.space {
+  margin-bottom: -3dip;
+}
+
+button[type=radio]:not(.time-format) {
+  font-family: 'Rubik';
+  font-size: 17dip;
+}
+
+.time-format {
+  font-weight: normal;
+  font-size: 12dip;  
+}
+
+
+black {
+  color: black;
+}

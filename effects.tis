@@ -1,0 +1,47 @@
+// function to generate a random number range.
+const randRange = function (minNum, maxNum) {
+  return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+}
+
+const showRain = function (nbDrop = 100) {
+  for (var i = 1; i < nbDrop; i++) {
+    var dropLeft = randRange(0, 400);
+    var dropTop = randRange(-1000, 1400);
+
+    $(body).$append(<div .drop #{"drop" + i}></div>);
+    $({"#drop" + i}).style.set { left: dropLeft };
+    $({"#drop" + i}).style.set {top: dropTop };
+  }
+}
+
+const hideRain = function() {
+  for (var div in $$(.drop)) {
+    div.remove();
+  }
+}
+
+const showSnow = function () {
+  $(body).$append(<div .snow .snow1></div>);
+  $(body).$append(<div .snow .snow2></div>);
+  $(body).$append(<div .snow .snow3></div>);
+}
+
+const hideSnow = function() {
+  for (var div in $$(.snow)) {
+    div.remove();
+  }
+}
+
+const showThunder = function () {
+  $(body).$append(<div .thunder></div>);
+}
+
+const hideThunder = function() {
+  $(.thunder) && $(.thunder).remove();
+}
+
+const removeStormEffects = function() {
+  hideRain();
+  hideSnow();
+  hideThunder();
+}

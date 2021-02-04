@@ -1,0 +1,133 @@
+<html window-frame="transparent" window-icon="assets/IconTemplate.png">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>temps</title>
+    <link href="rubik.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <link href="nav-icon.css" rel="stylesheet">
+    <link href="form.css" rel="stylesheet">
+    <link href="main-display.css" rel="stylesheet">
+    <link href="top-layer.css" rel="stylesheet">
+    <link href="four-day-forecast.css" rel="stylesheet">
+    <link href="effects.css" rel="stylesheet">
+    <link href="radio.css" rel="stylesheet">
+    <link href="copyright-notice.css" rel="stylesheet">
+    <script src="storage.tis"></script>
+    <script src="tray-icon.tis"></script>
+    <script src="radio.tis"></script>
+    <script src="main.tis"></script>
+    <script src="window.tis"></script>
+    <script src="nav-icon.tis"></script>
+    <script src="effects.tis"></script>
+    <script src="api-low-level.tis"></script>
+    <script src="api-high-level.tis"></script>
+    <script src="copyright-notice.tis"></script>
+  </head>
+
+  <body>
+    <!-- the mere existence of this div allows minimizing by taskbar icon click -->
+    <div role="window-minimize" style="size: 0; margin: 0; padding: 0; position: absolute;"></div>
+    <div #draggable role="window-caption">⣿</div>
+    <div #header>
+      <div #nav-icon>
+        <span></span>
+        <span></span>
+      </div>
+      <div #time></div>
+    </div>
+    <div #main-display .visible>
+      <div .main-display-row .shift-down>
+        <img #main-display-icon src="assets/icons/09n.svg" />
+      </div>
+      <div .main-display-row .large-temp>
+        ?°
+      </div>
+      <hr .half-opacity />
+      <div .main-display-row .half-opacity #main-display-description>
+        unknown
+      </div>
+    </div>
+    <div #container>
+      <img #boundary-image src="assets/background.png" />
+      <div #container-body>
+        <div #top-layer .visible>
+          <div .date-location>
+            <div #current-date>day, month ?</div>
+            <div #current-location>city, country</div>
+          </div>
+          <div #four-day-forecast>
+            <div .forecast .borderless>
+              <div .weekday>day</div>
+              <div .svg src="assets/icons//01d.svg"></div>
+              <div .temp>?°</div>
+            </div>
+            <div .forecast>
+              <div .weekday>day</div>
+              <div .svg src="assets/icons//01d.svg"></div>
+              <div .temp>?°</div>
+            </div>
+            <div .forecast>
+              <div .weekday>day</div>
+              <div .svg src="assets/icons/01d.svg"></div>
+              <div .temp>?°</div>
+            </div>
+            <div .forecast>
+              <div .weekday>day</div>
+              <div .svg src="assets/icons//01d.svg"></div>
+              <div .temp>?°</div>
+            </div>
+          </div>
+        </div>
+        <div .invisible #mask>
+          <div #banner>
+            <img #logo src="assets/app.png" />
+            <div #title>temps</div>
+            <img #spinner src="assets/iconTemplate@2x.png" />
+          </div>
+          <div #form>
+            <div .label>City</div>
+            <input type="text" id="city" />
+            <div .space>&nbsp;</div>
+            <div .label>API Key</div>
+            <input type="text" id="api-key" />
+            <div #help>
+              You need a free api key from <a href="https://www.openweathermap.org/">openweathermap.</a>
+            </div>
+            <div #form-rows>
+              <div .form-row #temperature-row>
+                <div .row-label>Temperature scale</div>
+                <div .radio-buttons>
+                  <button |radio (temp) #C value="metric">°C</button>
+                  <button |radio (temp) #F value="imperial" checked>°F</button>
+                </div>
+              </div>
+              <div .form-row #show-row>
+                <div .row-label>Show weather in menu bar</div>
+                <button|checkbox #trayicon-weather checked></button>
+              </div>
+              <div .form-row #start-row>
+                <div .row-label>Start at login</div>
+                <button|checkbox #autostart ></button>
+              </div>
+              <div .form-row #time-row>
+                <div .row-label>Time format</div>
+                <div .radio-buttons>
+                  <button |radio .time-format (time) #military-time value="24h">24h</button>
+                  <button |radio .time-format (time) #normal-time value="12h" checked>12h</button>
+                </div>
+              </div>
+              <div .form-row #buttons>
+                <button .apply-quit #apply>Apply</button>
+                <button .apply-quit #quit>Quit</button>
+              </div>
+            </div>
+            <div #copyright>
+              This application uses <img #sciter-logo src="assets/icons/sciter.png" /> <a #sciter-link href="https://sciter.com">Sciter Engine</a>, © Terra Informatica Software, Inc.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

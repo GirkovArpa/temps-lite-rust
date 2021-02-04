@@ -1,0 +1,54 @@
+const initDatabase = function(storage) {
+  storage.root = {
+    LOCATION: "brussels",
+    UNITS: "imperial",
+    TIME_FORMAT: "12h",
+    API_KEY: "",
+    WEATHER_IN_TRAY_ICON: true,
+    START_ON_LOGIN: false
+  };
+  return storage.root;
+}
+
+const storage = Storage.open(self.url("database.bin"));
+const root = storage.root || initDatabase(storage);
+
+/** **/
+
+$(#city) << event change { root.LOCATION = this.value; }
+$(#api-key) << event change { root.API_KEY = this.value; }
+$(#C) << event click { root.UNITS = "metric"; }
+$(#F) << event click { root.UNITS = "imperial"; }
+$(#military-time) << event click { root.TIME_FORMAT = "24h"; }
+$(#normal-time) << event click { root.TIME_FORMAT = "12h"; }
+$(#trayicon-weather) << event click { 
+  root.WEATHER_IN_TRAY_ICON = !this.state.checked; 
+  updateTrayIcon();
+};
+$(#autostart) << event click { 
+  root.START_ON_LOGIN = this.state.checked;
+};
+
+/** **/
+
+$(#city).value = root.LOCATION;
+$(#api-key).value = root.API_KEY;
+
+for (var radio in $$([name=temp])) {
+  radio.state.checked = false;
+}
+
+root.UNITS == "metric" 
+  ? $(#C).state.checked = true 
+  : $(#F).state.checked = true;
+
+for (var radio in $$([name=time])) {
+  radio.state.checked = false;
+}
+
+root.TIME_FORMAT == "24h" 
+  ? $(#military-time).state.checked = true 
+  : $(#normal-time).state.checked = true;
+
+$(#trayicon-weather).state.checked = root.WEATHER_IN_TRAY_ICON;
+$(#autostart).state.checked = root.START_ON_LOGIN;

@@ -1,0 +1,46 @@
+#nav-icon {
+  width: 60dip;
+  height: 60dip;
+  position: relative;
+  transform: rotate(0deg) scale(.3, .3);
+  transition: transform quad-in-out .5s;
+  cursor: pointer;
+  margin-top: -16dip;
+  margin-left: -20dip;
+  hit-margin: 50dip 50dip 50dip 50dip;
+}
+
+#nav-icon span {
+  display: block;
+  position: absolute;
+  height: 7dip;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 9dip;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: transform quad-in-out .25s;
+}
+
+#nav-icon span:nth-child(1) {
+  top: 0dip;
+  transform-origin: left center;
+}
+
+#nav-icon span:nth-child(2) {
+  top: 25dip;
+  transform-origin: left center;
+}
+
+#nav-icon.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: -3dip;
+  left: 4dip;
+}
+
+#nav-icon.open span:nth-child(2) {
+  transform: rotate(-45deg);
+  top: 39dip;
+  left: 4dip;
+}

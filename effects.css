@@ -1,0 +1,99 @@
+.drop {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 1dip;
+  height: 50dip;
+  position: absolute;
+  animation: fall .63s linear infinite;
+}
+
+/* animate the drops*/
+
+@keyframes fall {
+  from {
+    margin-top: -50dip;
+  }
+  to {
+    margin-top: 900dip;
+  }
+}
+
+.snow1, .snow2, .snow3 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 280dip;
+  height: 480dip;
+  background-position-top: 0px;
+  hit-margin: -999;
+}
+
+.snow1 {
+  background-image: url(assets/s1.png);
+  animation: infinite linear 10s snow1;
+}
+
+.snow2 {
+  background-image: url(assets/s2.png);
+  animation: infinite linear 10s snow2;
+}
+
+.snow3 {
+  background-image: url(assets/s3.png);
+  animation: infinite linear 10s snow3;
+}
+
+@keyframes snow1 {
+  0% {
+    background-position-top: 0;
+  }
+  100% {
+    background-position-top: 1000dip;
+  }
+}
+
+@keyframes snow2 {
+  0% {
+    background-position-top: 0;
+  }
+  100% {
+    background-position-top: 400dip;
+  }
+}
+
+@keyframes snow3 {
+  0% {
+    background-position-top: 0;
+  }
+  100% {
+    background-position-top: 300dip;
+  }
+}
+
+.thunder {
+  width: 280dip;
+  height: 480dip;
+  background-color: transparent;
+  position: absolute;
+  display: block;
+  top: 0;
+  animation-name: thunder;
+  animation-delay: 5s;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  hit-margin: -999;
+}
+
+/* The animation code */
+
+@keyframes thunder {
+  1% {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  30% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}

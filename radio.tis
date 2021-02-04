@@ -1,0 +1,10 @@
+event click $([type=radio]) (evt, radio) {
+  for (var button in $$([name={this.attributes["name"]}])) {
+    button.state.checked = false;
+  }
+  radio.state.checked = true;
+}
+
+event click $([type=checkbox]) (evt, checkbox) {
+  checkbox.state.checked = !checkbox.state.checked;
+}

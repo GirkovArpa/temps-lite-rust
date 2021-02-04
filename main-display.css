@@ -1,0 +1,54 @@
+#main-display {
+  size: max-content;
+  transition: opacity 1s quad-in-out, visibility 1s quad-in-out;
+  visibility: none;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  width: *;
+}
+
+#main-display.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+#main-display>hr {
+  border-color: white;
+  opacity: 0.5;
+  width: 24dip;
+  margin-right: *;
+  margin-left: *;
+  font-size: 18dip;
+  line-height: 18dip;
+  margin-bottom: 5dip;
+  margin-top: -3dip;
+  border-width: 2dip;
+}
+
+.main-display-row {
+  text-align: center;
+  color: white;
+  font-family: Rubik;
+  font-size: 18dip;
+  margin: 0;
+  padding: 0;
+}
+
+.main-display-row>img {
+  size: 80dip;
+  margin-left: -170dip;
+}
+
+.shift-down {
+  margin-bottom: -20dip;
+}
+
+.large-temp {
+  font-size: 48dip;
+  margin-left: 10dip;
+}
+
+.half-opacity {
+  opacity: 0.5;
+}

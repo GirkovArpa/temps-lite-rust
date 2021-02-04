@@ -1,0 +1,33 @@
+#top-layer {
+  position: absolute;
+  size: max-content;
+  transition: opacity 0.5s quad-in-out, visibility 0.5s quad-in-out;
+  opacity: 0;
+  text-align: center;
+  width: calc(100% - 24dip);
+  padding-left: 12dip;
+  padding-right: 12dip;
+  padding-top: 10dip;
+  hit-margin: -999dip;
+}
+
+#top-layer.visible {
+  visibility: visible;
+  opacity: 1;
+  hit-margin: 0;
+}
+
+.date-location {
+  flow: horizontal;
+  font-family: Rubik Light;
+  font-size: 12dip;
+  color: #999;
+  border-spacing: *;
+  width: 80%;
+  margin-left: *;
+  margin-right: *;
+}
+
+#current-date, #current-location {
+  text-transform: lowercase;
+}

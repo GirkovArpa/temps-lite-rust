@@ -1,0 +1,58 @@
+#four-day-forecast {
+  flow: horizontal;
+  width: calc(100% - 24dip);
+  text-align: center;
+  vertical-align: middle;
+  font-family: Rubik;
+  color: #999;
+  margin: 0;
+  margin-top: 30dip;
+  border-spacing: *;
+}
+
+.forecast {
+  margin: 0;
+  padding: 0;
+  flow: vertical;
+  vertical-align: middle;
+  text-align: center;
+  width: calc(25% - 6dip);
+  border-spacing: *;
+}
+
+.forecast>* {
+  margin: 0;
+  padding: 0;
+}
+
+.forecast:not(.borderless)::before {
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+  position: absolute;
+  width: 1dip;
+  height: 60%;
+  margin-top: 8dip;
+  display: block;
+  vertical-align: middle;
+}
+
+.weekday {
+  font-size: 10dip;
+  text-transform: lowercase;
+}
+
+.svg>svg {
+  width: 60dip;
+  height: 60dip;
+  margin: 0;
+  padding: 0;
+}
+
+.temp {
+  font-size: 14dip;
+}
+
+.temp::before {
+  content: "°";
+  opacity: 0;
+}

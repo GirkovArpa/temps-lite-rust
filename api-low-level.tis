@@ -1,0 +1,75 @@
+function constructCurrentUrl(location, api_key, units) {
+  return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units});
+}
+
+function constructForecastUrl(lat, lon, api_key, units) {
+  return String.$(https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid={api_key}&units={units});
+}
+
+async function fetch(url) {
+  const [response] = await view.request { 
+    url: url, 
+    type: #get,
+    output: #json,
+    noCache: false
+  };
+  return response;
+} 
+
+async function fetchMainData(testing, units, location, api_key) {
+  const url = testing 
+    ? self.url("test-data-current.json")
+    : constructCurrentUrl(location, api_key, units);
+  const response = await fetch(url);
+  const { description, icon } = response.weather[0];
+  const { temp } = response.main;
+  const location = response.name;
+  const { country } = response.sys;
+  const { lon, lat } = response.coord;
+  return { 
+    location: location,
+    country: country,
+    icon: icon,
+    temp: temp,
+    desc: description,
+    lon: lon,
+    lat: lat,
+    wdata: response
+  }
+}
+
+async function fetchForecastData(testing, units, lon, lat, api_key) {
+  const url = testing 
+    ? self.url("test-data-forecast.json") 
+    : constructForecastUrl(lat, lon, api_key, units);
+  const response = await fetch(url);
+  const { daily } = response;
+  const days = [];
+  for (var day in daily) { 
+    const { weather, temp } = day;
+    const temperature = temp.day;
+    const { description, icon } = weather[0];
+    days.push({
+      icon: icon, 
+      description: description, 
+      temperature: temperature
+    });
+  }
+  return days;
+}
+
+async function fetchAllData(testing, units, city, api_key) {
+  const { 
+    location, 
+    country, 
+    icon, 
+    temp, 
+    desc, 
+    lat, 
+    lon, 
+    wdata 
+  } = await fetchMainData(testing, units, city, api_key);
+  const days = await fetchForecastData(testing, units, lon, lat, api_key);
+  updateDisplays(location, country, icon, temp, desc, units, days);
+  return wdata;
+}

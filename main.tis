@@ -1,0 +1,60 @@
+const DEBUGGING = false; 
+DEBUGGING && view.connectToInspector && view.connectToInspector(rootElement, inspectorIpAddress);
+
+
+$(a) << event click {
+  const href = this.attributes["href"];
+  Sciter.launch(href);
+  return true;
+} 
+
+$(#quit) << event click {
+  view.close();
+}
+
+function pad(digit) {
+  return digit.length == 1 
+  ? "0" + digit
+  : digit;
+}
+
+function updateDate() {
+  const date = new Date().toLocaleString(#time);
+  const regex = /(\d+):(\d+):(\d+) (.*)/;
+  const matches = date.match(regex);
+  const [match, hours, minutes, seconds, meridian] = matches;
+  const h = pad(hours);
+  const m = pad(minutes);
+  const H = root.TIME_FORMAT == "12h"
+    ? h
+    : pad(new Date().hour);
+  const MERIDIAN = root.TIME_FORMAT == "12h"
+    ? String.$( {meridian})
+    : "";
+  $(#time).text = String.$({H}:{m}{MERIDIAN});
+  return true;
+}
+
+updateDate();
+
+self.timer(1s, updateDate);
+
+$(#military-time) << event click { 
+  root.TIME_FORMAT = "24h";
+  updateDate(); 
+}
+$(#normal-time) << event click { 
+  root.TIME_FORMAT = "12h";
+  updateDate();
+}
+
+for (var div in $$(.svg)) {
+  var html = "";
+  const file = Stream.openFile(div.attributes["src"],"r");
+  while (true) {
+    const line = file.readln();
+    if (line == undefined) break;
+    html += line;
+  }
+  div.html = html.replace(/#FFFFFF/gi, "#444");
+}

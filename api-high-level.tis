@@ -1,0 +1,145 @@
+const changeSmallIconColors = function(color) {
+  for (var div in $$(.svg)) {
+    div.html = div.html.replace(/fill="(#?[A-Z0-9]+)"/gi, String.$(fill="{color}"));
+  }
+}
+
+const tempToColor = function(temp, units) {
+  const COLORS = ["#b1695a", "#DB9864", "#E3BB88", "#D0C7A8", "#B1C2A3", "#80BBB2", "#6D9E96", "#8F95A5", "#6F7685"];
+  var i = null;
+  if (units == "metric") {
+    if (temp > 30) {
+      i = 0;
+    } else if (temp > 26) {
+      i = 1;
+    } else if (temp > 22) {
+      i = 2;
+    } else if (temp > 18) {
+      i = 3;
+    } else if (temp > 14) {
+      i = 4;
+    } else if (temp > 10) {
+      i = 5;
+    } else if (temp > 6) {
+      i = 6;
+    } else if (temp > 2) {
+      i = 7;
+    } else {
+      i = 8;
+    }
+  } else if (units == "imperial") {
+    if (temp > 86) {
+      i = 0;
+    } else if (temp > 78) {
+      i = 1;
+    } else if (temp > 71) {
+      i = 2;
+    } else if (temp > 64) {
+      i = 3;
+    } else if (temp > 57) {
+      i = 4;
+    } else if (temp > 50) {
+      i = 5;
+    } else if (temp > 42) {
+      i = 6;
+    } else if (temp > 35) {
+      i = 7;
+    } else {
+      i = 8;
+    }
+  }
+  return COLORS[i];
+}
+
+function getCurrentDate() {
+  const date = new Date();
+  const weekday = date.dayOfWeekName(true);
+  const month = date.monthName();
+  const day = date.day;
+  return String.$({weekday}, {month} {day});
+}
+
+function roundTemp(temp) {
+  return Math.round(temp).toInteger();
+}
+
+function updateDisplays(location, country, icon, temp, desc, units, days) {
+  const color = updateMainDisplay(location, country, icon, temp, desc, units);
+  updateForecastDisplay(days, color);
+  changeSmallIconColors(color);
+}
+
+function updateMainDisplay(location, country, icon, temp, desc, units) {
+  $(#main-display-icon).attributes["src"] = String.$(assets/icons/{icon}.svg);
+  $(.large-temp).text = roundTemp(temp) + "°";
+  $(#main-display-description).text = desc;
+  $(#current-location).text = String.$({location}, {country});
+  $(#current-date).text = getCurrentDate();
+
+  const color = tempToColor(temp, units);
+  $(body).style.set { background-color: color };
+  return color;
+}
+
+function getNextWeekdayName(date, distance) {
+  date.day += distance;
+  return date.dayOfWeekName(false);
+}
+
+function updateForecastDisplay(days) {
+  for (var (i, div) in $$(.forecast)) {
+    div.$(.weekday).text = getNextWeekdayName(new Date(), i + 1);
+    div.$(.temp).text = roundTemp(days[i].temperature) + "°";
+    const svg = div.$(.svg);
+    var html = "";
+    svg.attributes["src"] = String.$(assets/icons/{days[i].icon}.svg);
+    const file = Stream.openFile(svg.attributes["src"],"r");
+    while (true) {
+      const line = file.readln();
+      if (line == undefined) break;
+      html += line;
+    }
+    svg.html = html;
+  }
+}
+
+function displayStormEffects(wdata) {
+  removeStormEffects();
+  if (wdata.weather[0].main === "Rain") {
+    if (wdata.weather[0].description.indexOf("light") !== -1) {
+      showRain(50);
+    } else if (wdata.weather[0].description.indexOf("heavy") !== -1) {
+      showRain(200);
+    } else {
+      showRain(100);
+    }
+  }
+
+  if (wdata.weather[0].main === "Snow") {
+    showSnow();
+  }
+
+  if (wdata.weather[0].icon === "11d" || wdata.weather[0].icon === "11n") {
+    showThunder();
+  }
+}
+
+async function refresh() {
+  const timeFormat = $(#normal-time).state.checked ? "24h" : "12h";
+  const units = $(#C).state.checked ? "metric" : "imperial";
+  const location = $(#city).value;
+  const api_key = $(#api-key).value;
+  if (api_key == "") return true;
+  const testing = false;
+  const wdata = await fetchAllData(testing, units, location, api_key);
+  displayStormEffects(wdata);
+  updateTrayIcon();
+  return true;
+}
+
+$(#apply).on("click", refresh);
+
+self.timer(300s, refresh);
+
+refresh();
+updateTrayIcon();

@@ -1,0 +1,106 @@
+* {
+  image-rendering: auto;
+}
+
+html {
+  border-radius: 5dip;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #444;
+  size: *;
+}
+
+#header {
+  font-family: 'Rubik, sans-serif';
+  flow: horizontal;
+  border-spacing: *;
+  color: white;
+  margin: 8dip 8dip 8dip 8dip;
+}
+
+body:hover > #draggable {
+  opacity: 1;
+}
+
+#draggable {
+  transition: opacity quad-in-out 0.2s;
+  z-index: 100;
+  color: white;
+  opacity: 0.1;
+  position: absolute;
+  font-size: 40dip;
+  transform: rotate(90deg) translate(-10dip, -120dip);
+  transform-origin: center center;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 5dip;
+  width: 40dip;
+  height: 60dip;
+  background-color: transparent;
+}
+
+
+#container {
+  height: *;
+  padding-top: 32%;
+  transition: padding-top quad-in-out 1s;
+}
+
+#container.risen {
+  padding-top: -5%;
+}
+
+#container-body {
+  background-color: white;
+  height: *;
+  text-align: center;
+}
+
+#mask {
+  size: *;
+  opacity: 1;
+  transition: opacity quad-in-out 1s,
+}
+
+#mask.invisible {
+  opacity: 0;
+}
+
+#banner {
+  font-family: Rubik;
+  text-align: center;
+  font-size: 26dip;
+  flow: horizontal;
+  margin-left: 70dip;
+}
+
+#logo {
+  size: 40dip;
+}
+
+#title {
+  padding-left: 9dip;
+  padding-top: 5dip;
+}
+
+#spinner {
+  size: 20dip;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
