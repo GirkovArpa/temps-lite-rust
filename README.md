@@ -32,6 +32,7 @@ temps-lite
 - [ ] Timezone support
 - [ ] Shortcut support
 - [ ] Autostart on login
+- [ ] Move animations below forecasts layer
 
 ## Usage
 
