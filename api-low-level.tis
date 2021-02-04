@@ -11,7 +11,7 @@ async function fetch(url) {
     url: url, 
     type: #get,
     output: #json,
-    noCache: false
+    noCache: true
   };
   return response;
 } 

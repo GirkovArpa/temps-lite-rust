@@ -13,9 +13,10 @@ $(#quit) << event click {
 }
 
 function pad(digit) {
-  if (digit.length == 1) return "0" + digit;
-  if (digit.length == 0) return "00";
-  return digit;
+  const d = digit.toString();
+  if (d.length == 1) return "0" + d;
+  if (d.length == 0) return "00";
+  return d;
 }
 
 function updateDate() {

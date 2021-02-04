@@ -40,6 +40,8 @@ temps-lite
 
 Download the [Quark](https://quark.sciter.com/) executable corresponding to your operating system from the [Releases](https://github.com/GirkovArpa/temps-lite/releases).  If it's not available, simply run the appropriate Sciter binary inside this folder.  They can be downloaded [here](https://github.com/c-smile/sciter-sdk) under `bin.lnx`, `bin.osx`, or `bin.win`.
 
+For example, on Windows, you could download [scapp.exe](https://github.com/c-smile/sciter-sdk/blob/master/bin.win/x32/scapp.exe), place it in this folder, and double-click it.  That's all there is to it.
+
 
 ## Credits
 
