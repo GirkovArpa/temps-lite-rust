@@ -13,9 +13,9 @@ $(#quit) << event click {
 }
 
 function pad(digit) {
-  return digit.length == 1 
-  ? "0" + digit
-  : digit;
+  if (digit.length == 1) return "0" + digit;
+  if (digit.length == 0) return "00";
+  return digit;
 }
 
 function updateDate() {
