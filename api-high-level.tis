@@ -67,6 +67,7 @@ async function updateDisplays(location, country, icon, temp, desc, units, days) 
   const color = updateMainDisplay(location, country, icon, temp, desc, units);
   await updateForecastDisplay(days, color);
   changeSmallIconColors(color);
+  updateTrayIcon();
 }
 
 function updateMainDisplay(location, country, icon, temp, desc, units) {
@@ -75,7 +76,6 @@ function updateMainDisplay(location, country, icon, temp, desc, units) {
   $(#main-display-description).text = desc;
   $(#current-location).text = String.$({location}, {country});
   $(#current-date).text = getCurrentDate();
-
   const color = tempToColor(temp, units);
   $(body).style.set { background-color: color };
   return color;
@@ -133,7 +133,6 @@ async function refresh() {
   const testing = false;
   const wdata = await fetchAllData(testing, units, location, api_key);
   displayStormEffects(wdata);
-  updateTrayIcon();
   return true;
 }
 
@@ -141,5 +140,5 @@ $(#apply).on("click", refresh);
 
 self.timer(300s, refresh);
 
-refresh();
 updateTrayIcon();
+refresh();
