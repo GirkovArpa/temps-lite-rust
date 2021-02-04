@@ -33,9 +33,14 @@ temps-lite
 - [ ] Shortcut support
 - [ ] Autostart on login
 
+## Usage
+
+Download the [Quark](https://quark.sciter.com/) executable corresponding to your operating system from the [Releases](https://github.com/GirkovArpa/temps-lite/releases).  If it's not available, simply run the appropriate Sciter binary inside this folder.  They can be downloaded [here](https://github.com/c-smile/sciter-sdk) under `bin.lnx`, `bin.osx`, or `bin.win`.
+
+
 ## Credits
 
-This application was forked from the original [temps](https://github.com/jackd248/temps) repository.  Unlike that project, however, this one is based on [Sciter](https://sciter.com/) instead of Electron.
+This application was forked from the original [temps](https://github.com/jackd248/temps) repository.  Unlike that project, this one is based on [Sciter](https://sciter.com/) instead of Electron.
 
 The weather icons are made by the [original author](https://github.com/jackd248). If you would like to use them in your own project, you can find the icons on [Github](https://github.com/jackd248/weather-iconic) or at the [Noun Project](https://thenounproject.com/konradmichalik/collection/weather/).
 
