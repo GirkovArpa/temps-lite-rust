@@ -10,7 +10,7 @@ const initDatabase = function(storage) {
   return storage.root;
 }
 
-const storage = Storage.open(self.url("database.bin"));
+const storage = Storage.open("database.bin");
 const root = storage.root || initDatabase(storage);
 
 /** **/
