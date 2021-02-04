@@ -63,9 +63,9 @@ function roundTemp(temp) {
   return Math.round(temp).toInteger();
 }
 
-function updateDisplays(location, country, icon, temp, desc, units, days) {
+async function updateDisplays(location, country, icon, temp, desc, units, days) {
   const color = updateMainDisplay(location, country, icon, temp, desc, units);
-  updateForecastDisplay(days, color);
+  await updateForecastDisplay(days, color);
   changeSmallIconColors(color);
 }
 
@@ -86,14 +86,14 @@ function getNextWeekdayName(date, distance) {
   return date.dayOfWeekName(false);
 }
 
-function updateForecastDisplay(days) {
+async function updateForecastDisplay(days) {
   for (var (i, div) in $$(.forecast)) {
     div.$(.weekday).text = getNextWeekdayName(new Date(), i + 1);
     div.$(.temp).text = roundTemp(days[i].temperature) + "°";
     const svg = div.$(.svg);
     var html = "";
     svg.attributes["src"] = String.$(assets/icons/{days[i].icon}.svg);
-    const file = Stream.openFile(svg.attributes["src"],"r");
+    const [file] = await view.request { url: svg.attributes["src"] };
     while (true) {
       const line = file.readln();
       if (line == undefined) break;

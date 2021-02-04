@@ -48,13 +48,17 @@ $(#normal-time) << event click {
   updateDate();
 }
 
-for (var div in $$(.svg)) {
-  var html = "";
-  const file = Stream.openFile(div.attributes["src"],"r");
-  while (true) {
-    const line = file.readln();
-    if (line == undefined) break;
-    html += line;
+async function initIcons() {
+  for (var div in $$(.svg)) {
+    var html = "";
+    const [file] = await view.request { url: div.attributes["src"] };
+    while (true) {
+      const line = file.readln();
+      if (line == undefined) break;
+      html += line;
+    }
+    div.html = html.replace(/#FFFFFF/gi, "#444");
   }
-  div.html = html.replace(/#FFFFFF/gi, "#444");
 }
+
+initIcons();

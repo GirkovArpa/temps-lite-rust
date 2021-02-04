@@ -15,6 +15,7 @@ temps-lite
 
 ## Features
 
+* Small filesize
 * Actual weather information for any location
 * Four-Day weather forecast
 * Information directly in your taskbar available
@@ -22,7 +23,6 @@ temps-lite
 * Minimal and colorful design
 * Draggable
 * Minimizable
-* Less than 15mb
 
 ## Todo
 
