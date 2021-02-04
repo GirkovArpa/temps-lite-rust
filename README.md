@@ -34,6 +34,7 @@ temps-lite
 - [ ] Shortcut support
 - [ ] Autostart on login
 - [ ] Move animations below forecasts layer
+- [ ] Fix Apply/Quit button transitions
 
 ## Usage
 
