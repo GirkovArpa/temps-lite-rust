@@ -103,19 +103,20 @@ async function updateForecastDisplay(days) {
   }
 }
 
+// "light" & "heavy" must be internationalized manually to activate animations
 function displayStormEffects(wdata) {
   removeStormEffects();
   if (wdata.weather[0].main === "Rain") {
-    if (wdata.weather[0].description.indexOf("light") !== -1) {
+    if (/light|ligera/i.test(wdata.weather[0].description)) {
       showRain(50);
-    } else if (wdata.weather[0].description.indexOf("heavy") !== -1) {
+    } else if (/heavy|gran/i.test(wdata.weather[0].description)) {
       showRain(200);
     } else {
       showRain(100);
     }
   }
 
-  if (wdata.weather[0].main === "Snow") {
+  if (wdata.weather[0].main == "Snow") {
     showSnow();
   }
 
@@ -125,20 +126,23 @@ function displayStormEffects(wdata) {
 }
 
 async function refresh() {
+  const lang = $(#lang).$(option:current).attributes["value"];
   const timeFormat = $(#normal-time).state.checked ? "24h" : "12h";
   const units = $(#C).state.checked ? "metric" : "imperial";
   const location = $(#city).value;
   const api_key = $(#api-key).value;
-  if (api_key == "") return true;
+  if (api_key == "") return;
   const testing = false;
-  const wdata = await fetchAllData(testing, units, location, api_key);
+  const wdata = await fetchAllData(testing, units, location, api_key, lang);
   displayStormEffects(wdata);
-  return true;
 }
 
 $(#apply).on("click", refresh);
 
-self.timer(300s, refresh);
+self.timer(300s, function() {
+  refresh(); // returning true will not repeat the timer; it's an async function and returns a promise
+  return true; 
+});
 
 updateTrayIcon();
-refresh();
+//refresh(); execute in lang.tis instead

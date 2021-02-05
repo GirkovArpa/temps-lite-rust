@@ -1,4 +1,5 @@
 <html window-frame="transparent">
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>temps</title>
@@ -12,6 +13,7 @@
     <link href="effects.css" rel="stylesheet">
     <link href="radio.css" rel="stylesheet">
     <link href="copyright-notice.css" rel="stylesheet">
+    <link href="lang/lang.css" rel="stylesheet">
     <script src="storage.tis"></script>
     <script src="tray-icon.tis"></script>
     <script src="radio.tis"></script>
@@ -22,6 +24,7 @@
     <script src="api-low-level.tis"></script>
     <script src="api-high-level.tis"></script>
     <script src="copyright-notice.tis"></script>
+    <script src="lang/lang.tis"></script>
   </head>
 
   <body>
@@ -85,32 +88,40 @@
             <img #spinner src="assets/iconTemplate@2x.png" />
           </div>
           <div #form>
-            <div .label>City</div>
-            <input type="text" id="city" />
+            <div #form-pair>
+              <div #form-subpair>
+                <div .label #label-city>City</div>
+                <input type="text" #city />
+              </div>
+              <div #form-subpair>
+                <div .label #label-lang>Language</div>
+                <select #lang></select>
+              </div>
+            </div>
             <div .space>&nbsp;</div>
-            <div .label>API Key</div>
+            <div .label #label-api-key>API Key</div>
             <input type="text" id="api-key" />
             <div #help>
               You need a free api key from <a href="https://www.openweathermap.org/">openweathermap.</a>
             </div>
             <div #form-rows>
               <div .form-row #temperature-row>
-                <div .row-label>Temperature scale</div>
+                <div .row-label #temperature-row-label>Temperature scale</div>
                 <div .radio-buttons>
                   <button |radio (temp) #C value="metric">°C</button>
                   <button |radio (temp) #F value="imperial" checked>°F</button>
                 </div>
               </div>
               <div .form-row #show-row>
-                <div .row-label>Show weather in menu bar</div>
+                <div .row-label #show-row-label>Show weather in menu bar</div>
                 <button|checkbox #trayicon-weather checked></button>
               </div>
               <div .form-row #start-row>
-                <div .row-label>Start at login</div>
-                <button|checkbox #autostart ></button>
+                <div .row-label #start-row-label>Start at login</div>
+                <button|checkbox #autostart></button>
               </div>
               <div .form-row #time-row>
-                <div .row-label>Time format</div>
+                <div .row-label #time-row-label>Time format</div>
                 <div .radio-buttons>
                   <button |radio .time-format (time) #military-time value="24h">24h</button>
                   <button |radio .time-format (time) #normal-time value="12h" checked>12h</button>
@@ -123,10 +134,11 @@
             </div>
             <div #copyright>
               <div .copyright-row>
-              This application uses <img #sciter-logo src="assets/icons/sciter.png" /> <a #sciter-link href="https://sciter.com">Sciter Engine</a>,
+                This application uses <img #sciter-logo src="assets/icons/sciter.png" /> <a #sciter-link
+                  href="https://sciter.com">Sciter Engine</a>,
               </div>
               <div .copyright-row>
-              © Terra Informatica Software, Inc.
+                © Terra Informatica Software, Inc.
               </div>
             </div>
           </div>

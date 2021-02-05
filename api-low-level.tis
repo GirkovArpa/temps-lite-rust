@@ -1,9 +1,11 @@
-function constructCurrentUrl(location, api_key, units) {
-  return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units});
+function constructCurrentUrl(location, api_key, units, lang) {
+  const lang_abbr = LANGUAGE_ABBREVIATIONS[lang];
+  return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units}&lang={lang_abbr});
 }
 
-function constructForecastUrl(lat, lon, api_key, units) {
-  return String.$(https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid={api_key}&units={units});
+function constructForecastUrl(lat, lon, api_key, units, lang) {
+  const lang_abbr = LANGUAGE_ABBREVIATIONS[lang];
+  return String.$(https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid={api_key}&units={units}&lang={lang_abbr});
 }
 
 async function fetch(url) {
@@ -16,10 +18,10 @@ async function fetch(url) {
   return response;
 } 
 
-async function fetchMainData(testing, units, location, api_key) {
+async function fetchMainData(testing, units, location, api_key, lang) {
   const url = testing 
     ? self.url("test-data-current.json")
-    : constructCurrentUrl(location, api_key, units);
+    : constructCurrentUrl(location, api_key, units, lang);
   const response = await fetch(url);
   const { description, icon } = response.weather[0];
   const { temp } = response.main;
@@ -38,10 +40,10 @@ async function fetchMainData(testing, units, location, api_key) {
   }
 }
 
-async function fetchForecastData(testing, units, lon, lat, api_key) {
+async function fetchForecastData(testing, units, lon, lat, api_key, lang) {
   const url = testing 
     ? self.url("test-data-forecast.json") 
-    : constructForecastUrl(lat, lon, api_key, units);
+    : constructForecastUrl(lat, lon, api_key, units, lang);
   const response = await fetch(url);
   const { daily } = response;
   const days = [];
@@ -58,7 +60,7 @@ async function fetchForecastData(testing, units, lon, lat, api_key) {
   return days;
 }
 
-async function fetchAllData(testing, units, city, api_key) {
+async function fetchAllData(testing, units, city, api_key, lang) {
   const { 
     location, 
     country, 
@@ -68,8 +70,8 @@ async function fetchAllData(testing, units, city, api_key) {
     lat, 
     lon, 
     wdata 
-  } = await fetchMainData(testing, units, city, api_key);
-  const days = await fetchForecastData(testing, units, lon, lat, api_key);
+  } = await fetchMainData(testing, units, city, api_key, lang);
+  const days = await fetchForecastData(testing, units, lon, lat, api_key, lang);
   updateDisplays(location, country, icon, temp, desc, units, days);
   return wdata;
 }

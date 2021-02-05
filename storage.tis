@@ -1,17 +1,23 @@
 const initDatabase = function(storage) {
   storage.root = {
+    VERSION: "1.1.2",
     LOCATION: "brussels",
     UNITS: "imperial",
     TIME_FORMAT: "12h",
     API_KEY: "",
     WEATHER_IN_TRAY_ICON: true,
-    START_ON_LOGIN: false
+    START_ON_LOGIN: false,
+    LANG: "English"
   };
   return storage.root;
 }
 
 const storage = Storage.open("database.bin");
 const root = storage.root || initDatabase(storage);
+// backwards compatibility
+if (storage.root.LANG == undefined) {
+  storage.root.LANG = "English";
+}
 
 /** **/
 
@@ -52,3 +58,4 @@ root.TIME_FORMAT == "24h"
 
 $(#trayicon-weather).state.checked = root.WEATHER_IN_TRAY_ICON;
 $(#autostart).state.checked = root.START_ON_LOGIN;
+$(#lang).value = root.LANG;

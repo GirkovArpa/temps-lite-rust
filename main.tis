@@ -1,13 +1,6 @@
 const DEBUGGING = false; 
 DEBUGGING && view.connectToInspector && view.connectToInspector(rootElement, inspectorIpAddress);
 
-
-$(a) << event click {
-  const href = this.attributes["href"];
-  Sciter.launch(href);
-  return true;
-} 
-
 $(#quit) << event click {
   view.close();
 }
@@ -21,7 +14,7 @@ function pad(digit) {
 
 function updateDate() {
   const date = new Date().toLocaleString(#time);
-  const regex = /(\d+):(\d+):(\d+) (.*)/;
+  const regex = /(\d+):(\d+):(\d+) ?(.*)?/;
   const matches = date.match(regex);
   const [match, hours, minutes, seconds, meridian] = matches;
   const h = pad(hours);

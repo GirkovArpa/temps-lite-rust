@@ -1,0 +1,25 @@
+select#lang {
+  background: #80BBB2;
+  font-family: Rubik Light;
+  font-size: 14dip;
+  line-height: 14dip;
+}
+
+select#lang > caption {
+  color: white;
+}
+
+select#lang:focus {
+  border-color: transparent;
+}
+
+option {
+  font-family: Rubik Light;
+  background: transparent;
+  color: black;
+}
+
+option:hover, option:active {
+  background: #80BBB2;
+  color: white;
+}

@@ -15,6 +15,12 @@
   height: 32dip;
 }
 
+#form-pair {
+  flow: horizontal;
+  border-spacing: *;
+  width: calc(100% - 16dip);
+}
+
 .apply-quit {
   style-set: std-button-base;
   height: 26dip;
@@ -90,6 +96,10 @@ input[type=text] {
   font-size: 16dip;
 }
 
+#city, #lang {
+  width: calc(50% - 16dip);
+}
+
 .space {
   margin-bottom: -3dip;
 }
@@ -101,9 +111,8 @@ button[type=radio]:not(.time-format) {
 
 .time-format {
   font-weight: normal;
-  font-size: 12dip;  
+  font-size: 12dip;
 }
-
 
 black {
   color: black;

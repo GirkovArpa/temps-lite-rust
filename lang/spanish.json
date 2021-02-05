@@ -1,0 +1,21 @@
+{
+  "ABBR": "es",
+  "unknown": "desconocido",
+  "day, month ?": "día, mes, ?",
+  "city, country": "ciudad, país",
+  "day": "día",
+  "City": "Ciudad",
+  "API Key": "Llave de API",
+  "You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>": "Necesita una llave gratis de <a href='https://www.openweathermap.org/'>openweathermap.</a>",
+  "Temperature scale": "Escala de temperatura",
+  "Show weather in menu bar": "Tiempo en la barra de tareas",
+  "Start at login": "Comenzar al iniciar sesión",
+  "Time format": "Formato de tiempo",
+  "24h": "24h",
+  "12h": "12h",
+  "Apply": "Aplicar",
+  "Quit": "Abandonar",
+  "Language": "Idioma",
+  "English": "Inglés",
+  "Spanish": "Español"
+}
