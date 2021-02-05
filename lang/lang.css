@@ -5,7 +5,11 @@ select#lang {
   line-height: 14dip;
 }
 
-select#lang > caption {
+select>button {
+  fill: white;
+}
+
+select#lang>caption {
   color: white;
 }
 
