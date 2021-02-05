@@ -5,27 +5,13 @@ $(#quit) << event click {
   view.close();
 }
 
-function pad(digit) {
-  const d = digit.toString();
-  if (d.length == 1) return "0" + d;
-  if (d.length == 0) return "00";
-  return d;
-}
-
 function updateDate() {
-  const date = new Date().toLocaleString(#time);
-  const regex = /(\d+):(\d+):(\d+) ?(.*)?/;
-  const matches = date.match(regex);
-  const [match, hours, minutes, seconds, meridian] = matches;
-  const h = pad(hours);
-  const m = pad(minutes);
-  const H = root.TIME_FORMAT == "12h"
-    ? h
-    : pad(new Date().hour);
-  const MERIDIAN = root.TIME_FORMAT == "12h"
-    ? String.$( {meridian})
-    : "";
-  $(#time).text = String.$({H}:{m}{MERIDIAN});
+  if(root.TIME_FORMAT == "12h") {
+    $(#time).text = new Date().toString("%I:%M %p");
+  }
+  else {
+    $(#time).text = new Date().toString("%R");
+  }
   return true;
 }
 
