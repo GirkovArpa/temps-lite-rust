@@ -26,7 +26,7 @@ async function translate(lang) {
 
   LANGUAGE_ABBREVIATIONS[lang] = xlation.ABBR;
 
-  if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido")) {
+  if (($(#main-display-description).text === "unknown") || ($(#main-display-description).text === "desconocido")) {
     $(#main-display-description).text = xlation["unknown"];
   }
   $(#current-date).text = xlation["day, month ?"];
