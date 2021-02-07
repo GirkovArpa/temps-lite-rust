@@ -8,6 +8,7 @@ view.request {
   output: #json,
   url: "lang/list.json",
   complete: function(json) {
+    json.sort();
     for (var language in json) {
       $(select#lang).options.$append(<option value="{language}">{language}</option>);
     }
@@ -26,7 +27,7 @@ async function translate(lang) {
 
   LANGUAGE_ABBREVIATIONS[lang] = xlation.ABBR;
 
-  if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido")) {
+  if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido") || ($(#main-display-description).text == "unbekannt") || ($(#main-display-description).text == "inconnu") || ($(#main-display-description).text == "onbekend") || ($(#main-display-description).text == "sconosciuto")) {
     $(#main-display-description).text = xlation["unknown"];
   }
   $(#current-date).text = xlation["day, month ?"];

@@ -103,13 +103,48 @@ async function updateForecastDisplay(days) {
   }
 }
 
-// "light" & "heavy" must be internationalized manually to activate animations
+// https://openweathermap.org/weather-conditions
+const weatherDescriptions = {
+   200: "thunderstorm with light rain",
+   202: "thunderstorm with heavy rain",
+   211: "thunderstorm",
+   221: "ragged thunderstorm",
+   231: "thunderstorm with drizzle",
+   300: "light intensity drizzle",
+   302: "heavy intensity drizzle",
+   311: "drizzle rain",
+   313: "shower rain and drizzle",
+   321: "shower drizzle",
+   500: "light rain",
+   502: "heavy intensity rain",
+   504: "extreme rain",
+   520: "light intensity shower rain",
+   522: "heavy intensity shower rain",
+   600: "light snow",
+   602: "Heavy snow",
+   612: "Light shower sleet",
+   615: "Light rain and snow",
+   620: "Light shower snow",
+   622: "Heavy shower snow",
+   701: "mist",
+   721: "Haze",
+   741: "fog",
+   761: "dust",
+   771: "squalls",
+   800: "clear sky",
+   801: "few clouds",
+   802: "scattered clouds",
+   803: "broken clouds",
+   804: "overcast clouds"
+};
+
 function displayStormEffects(wdata) {
+  const { id } = wdata.weather[0];
   removeStormEffects();
   if (wdata.weather[0].main === "Rain") {
-    if (/light|ligera/i.test(wdata.weather[0].description)) {
+    if (/light/i.test(weatherDescriptions[id])) {
       showRain(50);
-    } else if (/heavy|gran/i.test(wdata.weather[0].description)) {
+    } else if (/heavy/i.test(weatherDescriptions[id])) {
       showRain(200);
     } else {
       showRain(100);
