@@ -6,7 +6,7 @@ $(#quit) << event click {
 }
 
 function updateDate() {
-  if(root.TIME_FORMAT == "12h") {
+  if(root.TIME_FORMAT === "12h") {
     $(#time).text = new Date().toString("%I:%M %p");
   }
   else {

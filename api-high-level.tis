@@ -7,7 +7,7 @@ const changeSmallIconColors = function(color) {
 const tempToColor = function(temp, units) {
   const COLORS = ["#b1695a", "#DB9864", "#E3BB88", "#D0C7A8", "#B1C2A3", "#80BBB2", "#6D9E96", "#8F95A5", "#6F7685"];
   var i = null;
-  if (units == "metric") {
+  if (units === "metric") {
     if (temp > 30) {
       i = 0;
     } else if (temp > 26) {
@@ -27,7 +27,7 @@ const tempToColor = function(temp, units) {
     } else {
       i = 8;
     }
-  } else if (units == "imperial") {
+  } else if (units === "imperial") {
     if (temp > 86) {
       i = 0;
     } else if (temp > 78) {
@@ -52,11 +52,7 @@ const tempToColor = function(temp, units) {
 }
 
 function getCurrentDate() {
-  const date = new Date();
-  const weekday = date.dayOfWeekName(true);
-  const month = date.monthName();
-  const day = date.day;
-  return String.$({weekday}, {month} {day});
+  return new Date().toString("%A, %b %d");
 }
 
 function roundTemp(temp) {
@@ -151,7 +147,7 @@ function displayStormEffects(wdata) {
     }
   }
 
-  if (wdata.weather[0].main == "Snow") {
+  if (wdata.weather[0].main === "Snow") {
     showSnow();
   }
 

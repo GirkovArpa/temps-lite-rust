@@ -44,7 +44,7 @@ for (var radio in $$([name=temp])) {
   radio.state.checked = false;
 }
 
-root.UNITS == "metric" 
+root.UNITS === "metric" 
   ? $(#C).state.checked = true 
   : $(#F).state.checked = true;
 
@@ -52,7 +52,7 @@ for (var radio in $$([name=time])) {
   radio.state.checked = false;
 }
 
-root.TIME_FORMAT == "24h" 
+root.TIME_FORMAT === "24h" 
   ? $(#military-time).state.checked = true 
   : $(#normal-time).state.checked = true;
 
