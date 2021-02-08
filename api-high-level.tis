@@ -52,7 +52,15 @@ const tempToColor = function(temp, units) {
 }
 
 function getCurrentDate() {
-  return new Date().toString("%A, %b %d");
+  const date = new Date();
+  const weekday = date.toString("%a").toLowerCase();
+  const month = date.toString("%B").toLowerCase();
+  const day = date.toString("%d");
+  const langAbbr = LANGUAGE_ABBREVIATIONS[root.LANG];
+  const dict = buildDictionary("en", langAbbr);
+  const weekdayXlated = dict[weekday];
+  const monthXlated = dict[month];
+  return String.$({weekdayXlated}, {monthXlated} {day});
 }
 
 function roundTemp(temp) {
@@ -79,7 +87,9 @@ function updateMainDisplay(location, country, icon, temp, desc, units) {
 
 function getNextWeekdayName(date, distance) {
   date.day += distance;
-  return date.dayOfWeekName(false);
+  const day = date.toString("%a").toLowerCase();
+  const dictionary = buildDictionary("en", LANGUAGE_ABBREVIATIONS[root.LANG]);
+  return dictionary[day];
 }
 
 async function updateForecastDisplay(days) {

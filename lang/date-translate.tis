@@ -1,0 +1,11 @@
+function buildDictionary(langFrom, langTo) {
+  const getMonth = (calendar) => calendar.$(caption).text.replace(/\d/g, "").toLowerCase();
+  const getDays = (calendar) => calendar.$$(.weekday).map(|el|el.text.toLowerCase());
+  const getMonthAndDays = (calendar) => [getMonth(calendar)].concat(...getDays(calendar));
+  const calendar = $(body).$append(<input|calendar date="now" lang="{langFrom}" style="display: none;" />);
+  const from = getMonthAndDays(calendar);
+  calendar.@["lang"] = langTo;
+  const to = getMonthAndDays(calendar);
+  calendar.remove();
+  return Object.assign(...from.map((k, i) => ({[k]: to[i]})));
+}
