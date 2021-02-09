@@ -161,7 +161,25 @@ function displayStormEffects(wdata) {
   }
 }
 
+async function addLanguageOptions() {
+  if ($(select#lang).options.length == 0) {
+    await view.request {
+      trySync: true,
+      output: #json,
+      url: "lang/list.json",
+      complete: function(json) {
+        json.sort();
+        for (var language in json) {
+          $(select#lang).options.$append(<option value="{language}">{language}</option>);
+        }
+        $(select#lang).value = root.LANG;
+      }
+    };
+  }
+}
+
 async function refresh() {
+  await addLanguageOptions();
   const lang = $(#lang).$(option:current).attributes["value"];
   const timeFormat = $(#normal-time).state.checked ? "24h" : "12h";
   const units = $(#C).state.checked ? "metric" : "imperial";
@@ -171,6 +189,7 @@ async function refresh() {
   const testing = false;
   const wdata = await fetchAllData(testing, units, location, api_key, lang);
   displayStormEffects(wdata);
+  translate(root.LANG);
 }
 
 $(#apply).on("click", refresh);
@@ -181,4 +200,4 @@ self.timer(300s, function() {
 });
 
 updateTrayIcon();
-//refresh(); execute in lang.tis instead
+refresh();

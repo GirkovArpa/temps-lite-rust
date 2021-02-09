@@ -1,31 +1,21 @@
+var LANGUAGE_ABBREVIATIONS = {};
+
 $(#lang) << event change {
   root.LANG = this.$(option:current).attributes["value"];
   translate(root.LANG);
 }
 
-view.request {
-  trySync: true,
-  output: #json,
-  url: "lang/list.json",
-  complete: function(json) {
-    json.sort();
-    for (var language in json) {
-      $(select#lang).options.$append(<option value="{language}">{language}</option>);
-    }
-  }
-};
-
-const LANGUAGE_ABBREVIATIONS = {};
-var translation_complete_ready_to_refresh = false;
-
 async function translate(lang) {
 
+  stdout.println(lang);
   const [xlation] = await view.request { 
     url: String.$(lang/{lang.toLowerCase()}.json),
-    output: #json
+    output: #json,
+    
   };
 
   LANGUAGE_ABBREVIATIONS[lang] = xlation.ABBR;
+  stdout.println(LANGUAGE_ABBREVIATIONS[lang]);
 
   if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido") || ($(#main-display-description).text == "unbekannt") || ($(#main-display-description).text == "inconnu") || ($(#main-display-description).text == "onbekend") || ($(#main-display-description).text == "sconosciuto")) {
     $(#main-display-description).text = xlation["unknown"];
@@ -40,6 +30,8 @@ async function translate(lang) {
   $(#label-api-key).text = xlation["API Key"];
   $(#help).html = xlation["You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>"];
   
+  // event handler for hyperlinks (openweathermap.org in this case) 
+  // are lost upon translation, and need to be restored
   $(a) << event click {
     const href = this.attributes["href"];
     Sciter.launch(href);
@@ -58,12 +50,5 @@ async function translate(lang) {
   $(#label-lang).text = xlation["Language"];
 
   $(#lang).value = root.LANG;
-  
-  if (translation_complete_ready_to_refresh == false) {
-    translation_complete_ready_to_refresh = true;
-    refresh();
-  }
 }
 
-$(#lang).value = root.LANG;
-translate(root.LANG);
