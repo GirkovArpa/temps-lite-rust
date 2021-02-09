@@ -1,77 +1,77 @@
-{
-  "ABBR": "de",
-  "unknown": "unbekannt",
-  "day, month ?": "Tag, Monat, ?",
-  "city, country": "Stadt, Land",
-  "day": "Tag",
-  "City": "Stadt",
-  "API Key": "API-Key",
-  "You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>": "Kostenloser API-Key erforderlich von <a href='https://www.openweathermap.org/'>openweathermap.</a>",
-  "Temperature scale": "Temperatureinheit",
-  "Show weather in menu bar": "Wetter in der Menüleiste anzeigen",
-  "Start at login": "Beim Einloggen starten",
-  "Time format": "Uhrzeitformat",
-  "24h": "24h",
-  "12h": "12h",
-  "Apply": "Anwenden",
-  "Quit": "Beenden",
-  "Language": "Sprache",
-  "English": "Englisch",
-  "Spanish": "Spanisch",
-  "German": "Deutsch",
-  "French": "Französisch",
-  "Dutch": "Holländisch",
-  "Italian": "Italienisch",
-  "DATES": {
-    "months": {
-      "short": {
-        "jan": "jan",
-        "feb": "feb",
-        "mar": "mär",
-        "apr": "apr",
-        "may": "mai",
-        "jun": "jun",
-        "jul": "jul",
-        "aug": "aug",
-        "sep": "sep",
-        "oct": "okt",
-        "nov": "nov",
-        "dec": "dez"
+  {
+    "ABBR": "de",
+    "unknown": "unbekannt",
+    "day, month ?": "Tag, Monat, ?",
+    "city, country": "Stadt, Land",
+    "day": "Tag",
+    "City": "Stadt",
+    "API Key": "API-Key",
+    "You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>": "Kostenloser API-Key nötig von <a href='https://www.openweathermap.org/'>openweathermap.</a>",
+    "Temperature scale": "Temperatureinheit",
+    "Show weather in menu bar": "Wetter in der Menüleiste anzeigen",
+    "Start at login": "Beim Einloggen starten",
+    "Time format": "Uhrzeitformat",
+    "24h": "24h",
+    "12h": "12h",
+    "Apply": "Anwenden",
+    "Quit": "Beenden",
+    "Language": "Sprache",
+    "English": "Englisch",
+    "Spanish": "Spanisch",
+    "German": "Deutsch",
+    "French": "Französisch",
+    "Dutch": "Holländisch",
+    "Italian": "Italienisch",
+    "DATES": {
+      "months": {
+        "short": {
+          "jan": "jan",
+          "feb": "feb",
+          "mar": "mär",
+          "apr": "apr",
+          "may": "mai",
+          "jun": "jun",
+          "jul": "jul",
+          "aug": "aug",
+          "sep": "sep",
+          "oct": "okt",
+          "nov": "nov",
+          "dec": "dez"
+        },
+        "long": {
+          "january": "januar",
+          "february": "februar",
+          "march": "märz",
+          "april": "april",
+          "may": "mai",
+          "june": "juni",
+          "july": "juli",
+          "august": "august",
+          "september": "september",
+          "october": "oktober",
+          "november": "november",
+          "december": "dezember"
+        }
       },
-      "long": {
-        "january": "januar",
-        "february": "februar",
-        "march": "märz",
-        "april": "april",
-        "may": "mai",
-        "june": "juni",
-        "july": "juli",
-        "august": "august",
-        "september": "september",
-        "october": "oktober",
-        "november": "november",
-        "december": "dezember"
-      }
-    },
-    "weekdays": {
-      "short": {
-        "mon": "mo",
-        "thu": "do",
-        "sun": "so",
-        "tue": "di",
-        "fri": "fr",
-        "wed": "mi",
-        "sat": "sa"
-      },
-      "long": {
-        "monday": "montag",
-        "thursday": "donnerstag",
-        "sunday": "sonntag",
-        "tuesday": "dienstag",
-        "friday": "freitag",
-        "wednesday": "mittwoch",
-        "saturday": "samstag"
+      "weekdays": {
+        "short": {
+          "mon": "mo",
+          "thu": "do",
+          "sun": "so",
+          "tue": "di",
+          "fri": "fr",
+          "wed": "mi",
+          "sat": "sa"
+        },
+        "long": {
+          "monday": "montag",
+          "thursday": "donnerstag",
+          "sunday": "sonntag",
+          "tuesday": "dienstag",
+          "friday": "freitag",
+          "wednesday": "mittwoch",
+          "saturday": "samstag"
+        }
       }
     }
   }
-}

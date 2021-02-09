@@ -6,12 +6,9 @@ $(#lang) << event change {
 }
 
 async function translate(lang) {
-
-  stdout.println(lang);
   const [xlation] = await view.request { 
     url: String.$(lang/{lang.toLowerCase()}.json),
-    output: #json,
-    
+    output: #json
   };
 
   LANGUAGE_ABBREVIATIONS[lang] = xlation.ABBR;
@@ -52,3 +49,4 @@ async function translate(lang) {
   $(#lang).value = root.LANG;
 }
 
+refresh();

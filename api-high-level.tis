@@ -200,4 +200,5 @@ self.timer(300s, function() {
 });
 
 updateTrayIcon();
-refresh();
+// refresh in lang.tis instead
+// refresh();
