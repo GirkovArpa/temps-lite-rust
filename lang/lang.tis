@@ -1,5 +1,3 @@
-include "date-translate.tis";
-
 $(#lang) << event change {
   root.LANG = this.$(option:current).attributes["value"];
   translate(root.LANG);
@@ -58,10 +56,6 @@ async function translate(lang) {
   $(#quit).text = xlation["Quit"];
 
   $(#label-lang).text = xlation["Language"];
-
-  for (var option in $$(option)) {
-    option.text = xlation[option.attributes["value"]];
-  }
 
   $(#lang).value = root.LANG;
   

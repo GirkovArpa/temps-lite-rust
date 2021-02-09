@@ -56,11 +56,7 @@ function getCurrentDate() {
   const weekday = date.toString("%a").toLowerCase();
   const month = date.toString("%B").toLowerCase();
   const day = date.toString("%d");
-  const langAbbr = LANGUAGE_ABBREVIATIONS[root.LANG];
-  const dict = buildDictionary("en", langAbbr);
-  const weekdayXlated = dict[weekday];
-  const monthXlated = dict[month];
-  return String.$({weekdayXlated}, {monthXlated} {day});
+  return String.$({weekday}, {month} {day});
 }
 
 function roundTemp(temp) {
@@ -88,8 +84,7 @@ function updateMainDisplay(location, country, icon, temp, desc, units) {
 function getNextWeekdayName(date, distance) {
   date.day += distance;
   const day = date.toString("%a").toLowerCase();
-  const dictionary = buildDictionary("en", LANGUAGE_ABBREVIATIONS[root.LANG]);
-  return dictionary[day];
+  return day;
 }
 
 async function updateForecastDisplay(days) {

@@ -21,5 +21,57 @@
   "German": "Allemand",
   "French": "Français",
   "Dutch": "Néerlandais",
-  "Italian": "Italien"
+  "Italian": "Italien",
+  "DATES": {
+    "months": {
+      "short": {
+        "jan": "janv.",
+        "feb": "févr.",
+        "mar": "mars",
+        "apr": "avr.",
+        "may": "mai",
+        "jun": "juin",
+        "jul": "juil.",
+        "aug": "août",
+        "sep": "sept.",
+        "oct": "oct.",
+        "nov": "nov.",
+        "dec": "déc."
+      },
+      "long": {
+        "january": "janvier",
+        "february": "février",
+        "march": "mars",
+        "april": "avril",
+        "may": "mai",
+        "june": "juin",
+        "july": "juillet",
+        "august": "août",
+        "september": "septembre",
+        "october": "octobre",
+        "november": "novembre",
+        "december": "décembre"
+      }
+    },
+    "weekdays": {
+      "short": {
+        "mon": "lun.",
+        "thu": "jeu.",
+        "sun": "dim.",
+        "tue": "mar.",
+        "fri": "ven.",
+        "wed": "mer.",
+        "sat": "sam."
+      },
+      "long": {
+        "monday": "lundi",
+        "thursday": "jeudi",
+        "sunday": "dimanche",
+        "tuesday": "mardi",
+        "friday": "vendredi",
+        "wednesday": "mercredi",
+        "saturday": "samedi"
+      }
+    }
+  }
 }

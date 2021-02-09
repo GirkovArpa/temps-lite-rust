@@ -21,5 +21,57 @@
   "German": "Duits",
   "French": "Frans",
   "Dutch": "Nederlands",
-  "Italian": "Italiaans"
+  "Italian": "Italiaans",
+  "DATES": {
+    "months": {
+      "short": {
+        "jan": "jan.",
+        "feb": "feb.",
+        "mar": "mrt.",
+        "apr": "apr.",
+        "may": "mei",
+        "jun": "jun.",
+        "jul": "jul.",
+        "aug": "aug.",
+        "sep": "sep.",
+        "oct": "okt.",
+        "nov": "nov.",
+        "dec": "dec."
+      },
+      "long": {
+        "january": "januari",
+        "february": "februari",
+        "march": "maart",
+        "april": "april",
+        "may": "mei",
+        "june": "juni",
+        "july": "juli",
+        "august": "augustus",
+        "september": "september",
+        "october": "oktober",
+        "november": "november",
+        "december": "december"
+      }
+    },
+    "weekdays": {
+      "short": {
+        "mon": "ma",
+        "thu": "do",
+        "sun": "zo",
+        "tue": "di",
+        "fri": "vr",
+        "wed": "wo",
+        "sat": "za"
+      },
+      "long": {
+        "monday": "maandag",
+        "thursday": "donderdag",
+        "sunday": "zondag",
+        "tuesday": "dinsdag",
+        "friday": "vrijdag",
+        "wednesday": "woensdag",
+        "saturday": "zaterdag"
+      }
+    }
+  }
 }
