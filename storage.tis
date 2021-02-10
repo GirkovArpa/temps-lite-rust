@@ -1,6 +1,6 @@
 const initDatabase = function(storage) {
   storage.root = {
-    VERSION: "1.1.3",
+    VERSION: "1.1.4",
     LOCATION: "brussels",
     UNITS: "imperial",
     TIME_FORMAT: "12h",
@@ -19,8 +19,6 @@ if (storage.root.LANG == undefined) {
   storage.root.LANG = "English";
 }
 
-/** **/
-
 $(#city) << event change { root.LOCATION = this.value; }
 $(#api-key) << event change { root.API_KEY = this.value; }
 $(#C) << event click { root.UNITS = "metric"; }
@@ -34,8 +32,6 @@ $(#trayicon-weather) << event click {
 $(#autostart) << event click { 
   root.START_ON_LOGIN = this.state.checked;
 };
-
-/** **/
 
 $(#city).value = root.LOCATION;
 $(#api-key).value = root.API_KEY;
