@@ -1,18 +1,10 @@
-var LANGUAGE_ABBREVIATIONS = {};
-
 $(#lang) << event change {
   root.LANG = this.$(option:current).attributes["value"];
   translate(root.LANG);
 }
 
-async function translate(lang) {
-  const [xlation] = await view.request { 
-    url: String.$(lang/{lang.toLowerCase()}.json),
-    output: #json
-  };
-
-  LANGUAGE_ABBREVIATIONS[lang] = xlation.ABBR;
-  stdout.println(LANGUAGE_ABBREVIATIONS[lang]);
+function translate(lang) {
+  const xlation = TRANSLATIONS[lang];
 
   if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido") || ($(#main-display-description).text == "unbekannt") || ($(#main-display-description).text == "inconnu") || ($(#main-display-description).text == "onbekend") || ($(#main-display-description).text == "sconosciuto")) {
     $(#main-display-description).text = xlation["unknown"];
@@ -44,9 +36,10 @@ async function translate(lang) {
   $(#apply).text = xlation["Apply"];
   $(#quit).text = xlation["Quit"];
 
-  $(#label-lang).text = xlation["Language"];
+  for (var option in $$(option)) {
+    option.text = xlation[option.@["value"]];
+  }
 
+  $(#label-lang).text = xlation["Language"];
   $(#lang).value = root.LANG;
 }
-
-refresh();

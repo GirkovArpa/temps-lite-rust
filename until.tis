@@ -1,0 +1,10 @@
+// condition should be a function that evaluates to true whenever the condition is met
+function until(condition) {
+  return promise(function (resolve, reject) {
+    self.timer(100ms, function() {
+      return condition() 
+      ? resolve() // end timer
+      : true; // repeat timer
+    });
+  });
+}

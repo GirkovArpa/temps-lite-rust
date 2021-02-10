@@ -161,44 +161,40 @@ function displayStormEffects(wdata) {
   }
 }
 
-async function addLanguageOptions() {
-  if ($(select#lang).options.length == 0) {
-    await view.request {
-      trySync: true,
-      output: #json,
-      url: "lang/list.json",
-      complete: function(json) {
-        json.sort();
-        for (var language in json) {
-          $(select#lang).options.$append(<option value="{language}">{language}</option>);
-        }
-        $(select#lang).value = root.LANG;
-      }
-    };
-  }
-}
 
 async function refresh() {
-  await addLanguageOptions();
+  await until(|| LANGUAGES_LOADED);
   const lang = $(#lang).$(option:current).attributes["value"];
+  const lang_abbr = TRANSLATIONS[lang].ABBR;
   const timeFormat = $(#normal-time).state.checked ? "24h" : "12h";
   const units = $(#C).state.checked ? "metric" : "imperial";
   const location = $(#city).value;
   const api_key = $(#api-key).value;
   if (api_key == "") return;
   const testing = false;
-  const wdata = await fetchAllData(testing, units, location, api_key, lang);
+  const wdata = await fetchAllData(testing, units, location, api_key, lang_abbr);
   displayStormEffects(wdata);
   translate(root.LANG);
+}
+
+async function addLanguageOptions() {
+  // wait until languages are loaded
+  await until(|| LANGUAGES_LOADED);
+  for (var language in TRANSLATIONS.list) {
+    const option = $(select#lang).options.$append(<option value="{language}">{language}</option>);
+  }
+  $(select#lang).value = root.LANG;
+  refresh();
 }
 
 $(#apply).on("click", refresh);
 
 self.timer(300s, function() {
-  refresh(); // returning true will not repeat the timer; it's an async function and returns a promise
+  refresh(); 
+  // even if refresh() were to returned true it would not repeat the timer
+  // because it's async and returns a promise
   return true; 
 });
 
 updateTrayIcon();
-// refresh in lang.tis instead
-// refresh();
+addLanguageOptions();

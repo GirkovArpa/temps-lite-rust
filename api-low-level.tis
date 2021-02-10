@@ -1,10 +1,8 @@
-function constructCurrentUrl(location, api_key, units, lang) {
-  const lang_abbr = LANGUAGE_ABBREVIATIONS[lang];
+function constructCurrentUrl(location, api_key, units, lang_abbr) {
   return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units}&lang={lang_abbr});
 }
 
-function constructForecastUrl(lat, lon, api_key, units, lang) {
-  const lang_abbr = LANGUAGE_ABBREVIATIONS[lang];
+function constructForecastUrl(lat, lon, api_key, units, lang_abbr) {
   return String.$(https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid={api_key}&units={units}&lang={lang_abbr});
 }
 
