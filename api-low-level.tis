@@ -70,6 +70,15 @@ async function fetchAllData(testing, units, city, api_key, lang) {
     wdata 
   } = await fetchMainData(testing, units, city, api_key, lang);
   const days = await fetchForecastData(testing, units, lon, lat, api_key, lang);
-  updateDisplays(location, country, icon, temp, desc, units, days);
-  return wdata;
+  return { 
+    days: days,
+    location: location, 
+    country: country, 
+    icon: icon, 
+    temp: temp, 
+    desc: desc, 
+    lat: lat, 
+    lon: lon, 
+    wdata: wdata 
+  };
 }

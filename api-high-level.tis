@@ -56,7 +56,11 @@ function getCurrentDate() {
   const weekday = date.toString("%a").toLowerCase();
   const month = date.toString("%B").toLowerCase();
   const day = date.toString("%d");
-  return String.$({weekday}, {month} {day});
+  return { 
+    weekday: weekday, 
+    month: month, 
+    day: day 
+  };
 }
 
 function roundTemp(temp) {
@@ -74,8 +78,14 @@ function updateMainDisplay(location, country, icon, temp, desc, units) {
   $(#main-display-icon).attributes["src"] = String.$(assets/icons/{icon}.svg);
   $(.large-temp).text = roundTemp(temp) + "°";
   $(#main-display-description).text = desc;
+  $(#main-display-description).@["description"] = desc;
   $(#current-location).text = String.$({location}, {country});
-  $(#current-date).text = getCurrentDate();
+  $(#current-location).@["city, country"] = $(#current-location).text;
+  const { weekday, month, day } = getCurrentDate();
+  $(#current-date).weekday = weekday;
+  $(#current-date).month = month;
+  $(#current-date).day = day;
+  $(#current-date).text = String.$({weekday}, {month} {day});
   const color = tempToColor(temp, units);
   $(body).style.set { background-color: color };
   return color;
@@ -89,7 +99,9 @@ function getNextWeekdayName(date, distance) {
 
 async function updateForecastDisplay(days) {
   for (var (i, div) in $$(.forecast)) {
-    div.$(.weekday).text = getNextWeekdayName(new Date(), i + 1);
+    const weekday = getNextWeekdayName(new Date(), i + 1);
+    div.$(.weekday).text = weekday;
+    div.$(.weekday).weekday = weekday;
     div.$(.temp).text = roundTemp(days[i].temperature) + "°";
     const svg = div.$(.svg);
     var html = "";
@@ -168,17 +180,27 @@ async function refresh() {
   const lang_abbr = TRANSLATIONS[lang].ABBR;
   const timeFormat = $(#normal-time).state.checked ? "24h" : "12h";
   const units = $(#C).state.checked ? "metric" : "imperial";
-  const location = $(#city).value;
+  const _location = $(#city).value;
   const api_key = $(#api-key).value;
   if (api_key == "") return;
   const testing = false;
-  const wdata = await fetchAllData(testing, units, location, api_key, lang_abbr);
+  const { 
+    days,
+    location, 
+    country, 
+    icon, 
+    temp, 
+    desc, 
+    lat, 
+    lon, 
+    wdata 
+  } = await fetchAllData(testing, units, _location, api_key, lang_abbr);
+  await updateDisplays(location, country, icon, temp, desc, units, days);
   displayStormEffects(wdata);
   translate(root.LANG);
 }
 
 async function addLanguageOptions() {
-  // wait until languages are loaded
   await until(|| LANGUAGES_LOADED);
   for (var language in TRANSLATIONS.list) {
     const option = $(select#lang).options.$append(<option value="{language}">{language}</option>);

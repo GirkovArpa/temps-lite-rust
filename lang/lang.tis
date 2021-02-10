@@ -6,13 +6,29 @@ $(#lang) << event change {
 function translate(lang) {
   const xlation = TRANSLATIONS[lang];
 
-  if (($(#main-display-description).text == "unknown") || ($(#main-display-description).text == "desconocido") || ($(#main-display-description).text == "unbekannt") || ($(#main-display-description).text == "inconnu") || ($(#main-display-description).text == "onbekend") || ($(#main-display-description).text == "sconosciuto")) {
+  if ($(#main-display-description).@["description"] == "unknown") {
     $(#main-display-description).text = xlation["unknown"];
   }
-  $(#current-date).text = xlation["day, month ?"];
-  $(#current-location).text = xlation["city, country"];
+
+  if ($(#current-date).@["day, month ?"] == "day, month ?") {
+    $(#current-date).text = xlation["day, month ?"];
+  } else {
+    const { weekday, month, day } = $(#current-date);
+    const weekdayX = xlation.DATES.weekdays.short[weekday];
+    const monthX = xlation.DATES.months.long[month];
+    $(#current-date).text = String.$({weekdayX}, {monthX} {day});
+  }
+
+  if ($(#current-location).@["city, country"] == "city, country") {
+    $(#current-location).text = xlation["city, country"];
+  }
+
   for (var el in $$(.weekday)) {
-    el.text = xlation["day"];
+    if (el.@["day"] == "day") {
+      el.text = xlation["day"];
+    } else {
+      el.text = xlation.DATES.weekdays.short[el.weekday];
+    }
   }
   $(#label-city).text = xlation["City"];
 
