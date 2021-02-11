@@ -6,7 +6,7 @@
   "day": "giorno",
   "City": "Città",
   "API Key": "Chiave de API",
-  "You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>": "Avete bisogno di una chiave de API gratuita de <a href='https://www.openweathermap.org/'>openweathermap.</a>",
+  "You need a free api key from <a href='https://www.openweathermap.org/'>openweathermap.</a>": "Inserite chiave de API gratuita de <a href='https://www.openweathermap.org/'>openweathermap.</a> qui",
   "Temperature scale": "Unità della temperatura",
   "Show weather in menu bar": "Mostra tempo nella barra menu",
   "Start at login": "Avviare all'inizio della sessione",
