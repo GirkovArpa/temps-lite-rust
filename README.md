@@ -62,7 +62,7 @@ On Linux, the process is similar.  Simply run [scapp](https://github.com/c-smile
   
   > warning:css: in @font-face statement, failed to install font at ...
 
-  To resolve this issue, please install the fonts [Rubik Regular 400](assets/fonts/Rubik\ Regular\ 400.ttf) & [Rubik Bold 700](assets/fonts/Rubik\ Bold\ 700.ttf) manually, then delete (or comment-out) line `6` from [main.htm](main.htm):
+  To resolve this issue, please install the fonts [Rubik Regular 400](assets/fonts/Rubik\%20Regular\%20400.ttf) & [Rubik Bold 700](assets/fonts/Rubik\%20Bold\%20700.ttf) manually, then delete (or comment-out) line `6` from [main.htm](main.htm):
 
   ```html
   <link href="rubik.css" rel="stylesheet">
