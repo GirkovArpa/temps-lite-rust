@@ -53,6 +53,21 @@ For example, on Windows, you could download [scapp.exe](https://github.com/c-smi
 
 On Linux, the process is similar.  Simply run [scapp](https://github.com/c-smile/sciter-sdk/blob/master/bin.lnx/x64/scapp) inside this folder, if your operating system is 64-bit.
 
+## Bugs 🐛
+
+<details>
+  <summary>Linux Font Installation</summary>
+  
+  On Linux, a console window may appear with the following error message:
+  
+  > warning:css: in @font-face statement, failed to install font at ...
+
+  To resolve this issue, please install the fonts [Rubik Regular 400](assets/fonts/Rubik%20Regular%20400.ttf) & [Rubik Bold 700](assets/fonts/Rubik%20Bold%20700.ttf) manually, then delete (or comment-out) line `6` from [main.htm](main.htm):
+
+  ```html
+  <link href="rubik.css" rel="stylesheet">
+  ```
+</details>
 
 ## History 📜
 
