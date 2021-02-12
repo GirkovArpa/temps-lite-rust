@@ -82,7 +82,7 @@ Thanks goes to these wonderful people:
 <table>
   <tr>
     <td align="center"><a href="https://github.com/4silvertooth"><img src="https://avatars.githubusercontent.com/u/793967?v=3?s=100" width="100px;" alt=""/><br /><sub><b>4silvertooth</b></sub></a><br /><a href="https://github.com/GirkovArpa/temps-lite/commit/8a06af5921ea8005d49e9ac90e750ba912fa17cb" title="Code">💻</a> 
-    <td align="center"><a href="https://github.com/papioara"><img src="https://avatars.githubusercontent.com/u/31970041?v=3?s=100" width="100px;" alt=""/><br /><sub><b>papioara</b></sub></a><br /><a href="https://github.com/GirkovArpa/temps-lite/issues/1#issuecomment-774692453" title="Translations">🌍</a></td>
+    <td align="center"><a href="https://github.com/papioara"><img src="https://avatars.githubusercontent.com/u/31970041?v=3?s=100" width="100px;" alt=""/><br /><sub><b>papioara</b></sub></a><br /><a href="https://github.com/GirkovArpa/temps-lite/issues/1#issuecomment-774692453" title="Translations">🌍</a><a href="https://github.com/GirkovArpa/temps-lite/pull/9" title="Translations">🐛</a></td>
   </tr>
 </table>
 
