@@ -8,6 +8,7 @@
   margin-top: -16dip;
   margin-left: -20dip;
   hit-margin: 50dip 50dip 50dip 50dip;
+  behavior: clickable;
 }
 
 #nav-icon span {

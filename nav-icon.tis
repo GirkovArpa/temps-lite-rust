@@ -9,7 +9,3 @@ function toggleSettings(navicon) {
 $(#nav-icon) << event click {
   toggleSettings(this);
 }
-
-$(#nav-icon) << event dblclick {
-  toggleSettings(this);
-}
