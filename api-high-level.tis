@@ -53,6 +53,7 @@ const tempToColor = function(temp, units) {
 
 function getCurrentDate() {
   const date = new Date();
+  date.millisecond += new Date().timeZoneOffset();
   const weekday = [
     "Mon", 
     "Tue", 
@@ -128,7 +129,9 @@ function getNextWeekdayName(date, distance) {
 
 async function updateForecastDisplay(days) {
   for (var (i, div) in $$(.forecast)) {
-    const weekday = getNextWeekdayName(new Date(), i + 1);
+    const date = new Date();
+    date.millisecond += new Date().timeZoneOffset();
+    const weekday = getNextWeekdayName(date, i + 1);
     div.$(.weekday).text = weekday;
     div.$(.weekday).weekday = weekday;
     div.$(.temp).text = roundTemp(days[i].temperature) + "°";
