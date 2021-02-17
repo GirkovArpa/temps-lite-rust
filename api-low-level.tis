@@ -1,5 +1,20 @@
+function round(n) {
+  return n.toString().replace(/0+$/, "");
+}
+
+function parseCoords(string) {
+  const match = string.match(/([\d\.]+).+?([\d\.]+)/);
+  const [ _, lat, lon ] = match; 
+  return { lat: lat, lon: lon };
+}
+
 function constructCurrentUrl(location, api_key, units, lang_abbr) {
-  return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units}&lang={lang_abbr});
+  if (/\d/.test(location)) {
+    const { lat, lon } = parseCoords(location);
+    return String.$(https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units={units}&lang={lang_abbr});
+  } else {
+    return String.$(https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}&units={units}&lang={lang_abbr});
+  }
 }
 
 function constructForecastUrl(lat, lon, api_key, units, lang_abbr) {
@@ -23,9 +38,13 @@ async function fetchMainData(testing, units, location, api_key, lang) {
   const response = await fetch(url);
   const { description, icon } = response.weather[0];
   const { temp } = response.main;
-  const location = response.name;
-  const { country } = response.sys;
+  var location = response.name;
   const { lon, lat } = response.coord;
+  var { country } = response.sys;
+  if (country === undefined) {
+    location = round(lat);
+    country = round(lon);
+  }
   return { 
     location: location,
     country: country,
