@@ -3,6 +3,14 @@ $(#lang) << event change {
   translate(root.LANG);
 }
 
+function formatCurrentDate(xlation, weekday, month, day) {
+  const format = xlation["CURRENT-DATE-FORMAT"];
+  return format
+    .replace("WEEKDAY", weekday)
+    .replace("MONTH", month)
+    .replace("DAY", day);
+}
+
 function translate(lang) {
   const xlation = TRANSLATIONS[lang];
 
@@ -16,7 +24,7 @@ function translate(lang) {
     const { weekday, month, day } = $(#current-date);
     const weekdayX = xlation.DATES.weekdays.short[weekday];
     const monthX = xlation.DATES.months.long[month];
-    $(#current-date).text = String.$({weekdayX}, {monthX} {day});
+    $(#current-date).text = formatCurrentDate(xlation, weekdayX, monthX, day);
   }
 
   if ($(#current-location).@["city, country"] == "city, country") {

@@ -22,6 +22,7 @@
   "French": "Francese",
   "Dutch": "Holandese",
   "Italian": "Italiano",
+  "CURRENT-DATE-FORMAT": "WEEKDAY, MONTH DAY",
   "DATES": {
     "months": {
       "short": {
