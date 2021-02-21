@@ -5,24 +5,12 @@ $(#quit) << event click {
   view.close();
 }
 
-// https://stackoverflow.com/a/13899011/13378247
-function to12h(time) {
-  // Check correct time format and split into components
-  time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-  time = time.map(|n| (n === ":" || n === "") ? n : n.toInteger());
-  if (time.length > 1) { // If time format correct
-    time = time.slice(1);  // Remove full string match value
-    time[5] = +time[0] < 12 ? " AM" : " PM"; // Set AM/PM
-    time[2] = time[2].toString().length == 1 ? "0" + time[2] : time[2];
-    time[0] = +time[0] % 12 || 12; // Adjust hours
-  }
-  time = time.filter(|n| n === undefined ? false : true);
-  return time.join(""); // return adjusted time or original string
-}
-
 function updateDate() {
-  const time = new Date().toString("%R");
-  $(#time).text = root.TIME_FORMAT === "24h" ? time : to12h(time);
+  const date = new Date();
+  $(#time).text = root.TIME_FORMAT === "24h" 
+    ? new Date().toString("%R")
+    : date.toString("%I:%M ")
+        .concat(date.hour / 12 ? "PM" : "AM");
   return true;
 }
 
