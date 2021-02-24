@@ -29,3 +29,5 @@ Command::new("packfolder")
 ```
 
 This way of setting the icon is of course incompatible with Linux.  Also, the call to [packfolder]([packfolder](https://github.com/c-smile/sciter-sdk/blob/master/bin.win/packfolder.exe)).exe should be replaced with the equivalent of calling the [packfolder](https://github.com/c-smile/sciter-sdk/blob/master/bin.lnx/packfolder).
+
+Also, this application requires the library corresponding to your version of Linux to be either in `PATH` (not sure if they have that on Linux) or in the same folder.  They can be found [here](https://github.com/c-smile/sciter-sdk/tree/master/bin.lnx).
