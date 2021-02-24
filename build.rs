@@ -5,7 +5,7 @@ use std::io;
 
 fn main() {
   if cfg!(target_os = "windows") {
-    Command::new("packfolder.exe")
+    Command::new("packfolder")
       .args(&["app", "target/assets.rc", "-binary"])
       .output()
       .expect("Unable to run packfolder.exe!");
