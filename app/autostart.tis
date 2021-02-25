@@ -1,0 +1,3 @@
+event click ("#autostart") {
+  stdout.println("autostart");
+}
