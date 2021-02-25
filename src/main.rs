@@ -1,7 +1,33 @@
 #![windows_subsystem="windows"]
+#[macro_use] extern crate sciter;
+
 struct EventHandler;
-impl EventHandler {}
-impl sciter::EventHandler for EventHandler {}
+impl EventHandler {
+    fn createWindowsShortcut(&self, add: bool) -> sciter::Value {
+        // https://users.rust-lang.org/t/how-to-make-my-exe-autorun-in-windows/49045/12
+        use std::path::Path;
+        use winreg::enums::*;
+        use winreg::RegKey;
+        let hkcu = RegKey::predef(HKEY_CURRENT_USER);
+        let path = Path::new("Software").join("Microsoft").join("Windows").join("CurrentVersion").join("Run");
+        let (key, disp) = hkcu.create_subkey(&path).unwrap();
+        dbg!(&disp);
+        let path = format!("\"{}\"", std::env::current_exe().unwrap().to_str().unwrap().to_string());
+        println!("{}", path);
+        if add {
+            key.set_value("temps-lite", &path).unwrap();
+        } else {
+            key.delete_value("temps-lite").unwrap();
+        }
+        sciter::Value::from(true)
+    }
+}
+
+impl sciter::EventHandler for EventHandler {
+    dispatch_script_call! (
+        fn createWindowsShortcut(bool);
+    );
+}
 fn main() {
     // allows CTRL+SHIFT+I to connect to inspector.exe
     sciter::set_options(sciter::RuntimeOptions::DebugMode(true)).unwrap();
