@@ -1,3 +1,7 @@
+async function createDir(path){
+  await System.mkdir(path);
+}
+
 $(#autostart) << event click { 
   switch(System.PLATFORM) {
     case #Windows:
