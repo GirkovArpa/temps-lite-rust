@@ -1,7 +1,11 @@
 #![windows_subsystem="windows"]
 #[macro_use] extern crate sciter;
 
+#[cfg(windows)]
+use winreg;
+
 struct EventHandler;
+#[cfg(windows)]
 impl EventHandler {
     fn createWindowsShortcut(&self, add: bool) -> sciter::Value {
         // https://users.rust-lang.org/t/how-to-make-my-exe-autorun-in-windows/49045/12
@@ -19,15 +23,17 @@ impl EventHandler {
         } else {
             key.delete_value("temps-lite").unwrap();
         }
-        sciter::Value::from(true)
+        sciter::Value::from(true);
     }
 }
 
 impl sciter::EventHandler for EventHandler {
+    #[cfg(windows)]
     dispatch_script_call! (
         fn createWindowsShortcut(bool);
     );
 }
+
 fn main() {
     // allows CTRL+SHIFT+I to connect to inspector.exe
     sciter::set_options(sciter::RuntimeOptions::DebugMode(true)).unwrap();

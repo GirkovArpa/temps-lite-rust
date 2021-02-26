@@ -8,6 +8,8 @@ edition = "2018"
 
 [dependencies]
 sciter-rs = "*"
+
+[target.'cfg(windows)'.dependencies]
 winreg = "0.8"
 
 [target.'cfg(windows)'.build-dependencies]
