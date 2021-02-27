@@ -1,11 +1,7 @@
-async function createDir(path){
-  await System.mkdir(path);
-}
-
-$(#autostart) << event click { 
+async function manageAutoStart(checked) {
   switch(System.PLATFORM) {
     case #Windows:
-      view.createWindowsShortcut(!this.state.checked);
+      view.createWindowsShortcut(checked);
     break;
     
     case #OSX:
@@ -15,13 +11,13 @@ $(#autostart) << event click {
     {
       const autodir = System.path(#USER_HOME,".config/autostart");
       if(!System.scanFiles(autodir)) {
-        createDir(autodir);
+        await System.mkdir(autodir);
       }
       const path = System.path(#USER_HOME,".config/autostart/temps-lite.desktop");
       
       //TODO: Check .state.checked value is opposite of button|checkbox here
       //debug info: this.state.checked;
-      if(!this.state.checked) {
+      if(checked) {
         const appName = "temps-lite";
         const appPath = URL.toPath(System.home("./temps-lite-rust"));
         const data = String.$([Desktop Entry]
@@ -40,6 +36,7 @@ $(#autostart) << event click {
         }
         stream.printf("%s",data);
         stream.close();
+        root.START_ON_LOGIN = true;
       }
       else {
         System.unlink(path)
@@ -54,4 +51,8 @@ $(#autostart) << event click {
     break;
   }
 
+}
+
+$(#autostart) << event click { 
+  manageAutoStart(!this.state.checcked);
 }

@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 #![windows_subsystem="windows"]
 #[macro_use] extern crate sciter;
 
@@ -23,7 +24,7 @@ impl EventHandler {
         } else {
             key.delete_value("temps-lite").unwrap();
         }
-        sciter::Value::from(true);
+        return sciter::Value::from(true);
     }
 }
 
