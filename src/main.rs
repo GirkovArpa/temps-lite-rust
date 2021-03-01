@@ -1,4 +1,4 @@
-#![allow(non_snake_case)]
+// hide console window on Windows
 #![windows_subsystem="windows"]
 #[macro_use] extern crate sciter;
 
@@ -8,6 +8,7 @@ use winreg;
 struct EventHandler;
 #[cfg(windows)]
 impl EventHandler {
+    #[allow(non_snake_case)]
     fn createWindowsShortcut(&self, add: bool) -> sciter::Value {
         // https://users.rust-lang.org/t/how-to-make-my-exe-autorun-in-windows/49045/12
         use std::path::Path;
@@ -18,13 +19,12 @@ impl EventHandler {
         let (key, disp) = hkcu.create_subkey(&path).unwrap();
         dbg!(&disp);
         let path = format!("\"{}\"", std::env::current_exe().unwrap().to_str().unwrap().to_string());
-        println!("{}", path);
         if add {
             key.set_value("temps-lite", &path).unwrap();
         } else {
             key.delete_value("temps-lite").unwrap();
         }
-        return sciter::Value::from(true);
+        sciter::Value::from(true)
     }
 }
 

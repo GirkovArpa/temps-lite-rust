@@ -1,6 +1,6 @@
 const initDatabase = function(storage) {
   storage.root = {
-    VERSION: "1.1.5",
+    VERSION: "2.0.0",
     LOCATION: "New York",
     UNITS: "imperial",
     TIME_FORMAT: "12h",
@@ -29,9 +29,10 @@ $(#trayicon-weather) << event click {
   root.WEATHER_IN_TRAY_ICON = !this.state.checked; 
   updateTrayIcon();
 };
+/* moved to autostart.tis
 $(#autostart) << event click { 
   root.START_ON_LOGIN = this.state.checked;
-};
+};*/
 
 $(#city).value = root.LOCATION;
 $(#api-key).value = root.API_KEY;
@@ -55,3 +56,4 @@ root.TIME_FORMAT === "24h"
 $(#trayicon-weather).state.checked = root.WEATHER_IN_TRAY_ICON;
 $(#autostart).state.checked = root.START_ON_LOGIN;
 $(#lang).value = root.LANG;
+

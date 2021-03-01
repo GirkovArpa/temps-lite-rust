@@ -2,6 +2,7 @@ async function manageAutoStart(checked) {
   switch(System.PLATFORM) {
     case #Windows:
       view.createWindowsShortcut(checked);
+      root.START_ON_LOGIN = checked;
     break;
     
     case #OSX:
@@ -9,7 +10,7 @@ async function manageAutoStart(checked) {
     
     case #Linux:
     {
-      const autodir = System.path(#USER_HOME,".config/autostart");
+      const autodir = System.path(#USER_HOME, ".config/autostart");
       if(!System.scanFiles(autodir)) {
         await System.mkdir(autodir);
       }
@@ -54,5 +55,5 @@ async function manageAutoStart(checked) {
 }
 
 $(#autostart) << event click { 
-  manageAutoStart(!this.state.checcked);
+  manageAutoStart(!this.state.checked);
 }
