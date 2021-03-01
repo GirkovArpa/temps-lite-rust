@@ -2,6 +2,10 @@
 
 Rust port of [temps-lite](https://github.com/girkovarpa/temps-lite).
 
+## Usage
+
+The folder [locale](locale) is not packed into the executable and must be included with it in order to run.  This is to allow extending locale support without having to rebuild.
+
 ## Compiling for Linux
 
 Before running `cargo build --release`, please be aware of some Windows-specific things.
